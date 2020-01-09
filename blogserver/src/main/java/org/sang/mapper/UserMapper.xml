@@ -43,7 +43,7 @@
         </collection>
     </resultMap>
     <select id="getAllRole" resultType="org.sang.bean.Role">
-        select * from roles;
+        select * from roles
     </select>
     <update id="updateUserEnabled">
         UPDATE vl_user set enabled=#{enabled} WHERE id=#{uid}
@@ -52,12 +52,10 @@
         DELETE FROM vl_user WHERE id=#{id}
     </delete>
     <delete id="deleteUserRolesByUid">
-        DELETE FROM roles_user WHERE uid=#{id}
+        DELETE FROM roles_user WHERE u_id=#{id}
     </delete>
-    <insert id="setUserRoles">
-        INSERT INTO roles_user(rid,uid) VALUES
-        <foreach collection="rids" separator="," item="rid">
-            (#{rid},#{id})
-        </foreach>
+    <insert id="setUserRole">
+        INSERT   INTO roles_user(id,rid,u_id) VALUES
+            (hibernate_sequence.nextval,#{rid},#{id})
     </insert>
 </mapper>

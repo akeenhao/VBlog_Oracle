@@ -56,10 +56,8 @@ public class UserManaController {
 
     @RequestMapping(value = "/user/role", method = RequestMethod.PUT)
     public RespBean updateUserRoles(Long[] rids, Long id) {
-        if (userService.updateUserRoles(rids, id) == rids.length) {
+
+                userService.updateUserRole(rids, id) ;
             return new RespBean("success", "更新成功!");
-        } else {
-            return new RespBean("error", "更新失败!");
-        }
     }
 }

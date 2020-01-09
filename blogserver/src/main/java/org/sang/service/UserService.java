@@ -86,9 +86,11 @@ public class UserService implements UserDetailsService {
         return userMapper.deleteUserById(uid);
     }
 
-    public int updateUserRoles(Long[] rids, Long id) {
-        int i = userMapper.deleteUserRolesByUid(id);
-        return userMapper.setUserRoles(rids, id);
+    public void updateUserRole(Long[] rids, Long id) {
+        userMapper.deleteUserRolesByUid(id);
+        for (Long rid : rids) {
+            userMapper.setUserRole(rid, id);
+        }
     }
 
     public User getUserById(Long id) {

@@ -29,7 +29,7 @@ public interface UserMapper {
 
     int deleteUserRolesByUid(Long id);
 
-    int setUserRoles(@Param("rids") Long[] rids, @Param("id") Long id);
+    void setUserRole(@Param("rid") Long rid, @Param("id") Long id);
 
     User getUserById(@Param("id") Long id);
 }
